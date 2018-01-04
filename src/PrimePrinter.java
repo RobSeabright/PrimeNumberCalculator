@@ -7,7 +7,7 @@ public class PrimePrinter {
     public static void main(String[] args) {
         System.out.println("Prime Numbers Are Cool!");
 
-        printPrime(10);
+        printPrime(100);
     }
 
     public static void printPrime(int upperlimit){
