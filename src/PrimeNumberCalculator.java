@@ -6,42 +6,44 @@ import java.lang.*;
 
 public class PrimeNumberCalculator {
 
-    private static String primeFactors;
+    public static StringBuilder primeFactors = new StringBuilder("");
 
-
-    private static String getPrimeFactors(int i){
+    /**
+     *
+     * @param i positive integer to be factored
+     */
+    private static void getPrimeFactors(int i){
 
         while(i%2==0){
-            primeFactors += "2*";
+            primeFactors.append("2*");
             i /= 2;
         }
 
         for(int j=3; j<=Math.sqrt(i); j+=2){
             while(i%j==0){
-                primeFactors += j+"*";
+                primeFactors.append(j).append("*");
                 i /= j;
             }
         }
         if(i > 2){
-            primeFactors += i+"*";
+            primeFactors.append(i).append("*");
         }
-        return primeFactors;
     }
-
 
     /**
      *
      * @param i positive integer i
-     * @return
+     * @return primeFactors StringBuilder containing the prime factors of i
      */
-    public static String getUniquePrimeRepresentation(int i){
-        primeFactors = "";
-        primeFactors = getPrimeFactors(i);
-        primeFactors = primeFactors.substring(0, primeFactors.length() - 1);
+    public static StringBuilder getUniquePrimeRepresentation(int i){
+        primeFactors.setLength(0);
+        getPrimeFactors(i);
+        primeFactors.setLength(primeFactors.length()-1);
         return primeFactors;
     }
 }
 
+//    Used to find if a number is prime or not - legacy
 
 //    public static String isPrime(int i){
 //

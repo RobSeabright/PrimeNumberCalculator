@@ -11,8 +11,12 @@ public class PrimePrinter {
         printPrime(33);
     }
 
-    public static void printPrime(int upperlimit){
-        for (int i=2; i<=upperlimit; i++){
+    /**
+     * Prints the prime factors for each integer between 2 and upperLimit
+     * @param upperLimit positive integer set by user
+     */
+    public static void printPrime(int upperLimit){
+        for (int i=2; i<=upperLimit; i++){
             System.out.printf("     %-8d|     %s\n", i,
                         PrimeNumberCalculator.getUniquePrimeRepresentation(i));
         }
