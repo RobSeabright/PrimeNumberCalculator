@@ -8,19 +8,26 @@ public class PrimeNumberCalculator {
 
     private static String primeFactors;
 
-    /**
-     *
-     * @param i positive integer i
-     */
-    public static String isPrime(int i){
 
-        if(i%2==0) return i==2 ? "true" : "false";
+    private static String getPrimeFactors(int i){
+
+        while(i%2==0){
+            primeFactors += "2*";
+            i /= 2;
+        }
 
         for(int j=3; j<=Math.sqrt(i); j+=2){
-            if(i%j==0) return "false";
+            while(i%j==0){
+                primeFactors += j+"*";
+                i /= j;
+            }
         }
-        return "true";
+        if(i > 2){
+            primeFactors += i+"*";
+        }
+        return primeFactors;
     }
+
 
     /**
      *
@@ -29,7 +36,19 @@ public class PrimeNumberCalculator {
      */
     public static String getUniquePrimeRepresentation(int i){
         primeFactors = "";
-        primeFactors = isPrime(i);
+        primeFactors = getPrimeFactors(i);
+        primeFactors = primeFactors.substring(0, primeFactors.length() - 1);
         return primeFactors;
     }
 }
+
+
+//    public static String isPrime(int i){
+//
+//        if(i%2==0) return i==2 ? "true" : "false";
+//
+//        for(int j=3; j<=Math.sqrt(i); j+=2){
+//            if(i%j==0) return "false";
+//        }
+//        return "true";
+//    }
